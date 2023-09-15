@@ -1,0 +1,22 @@
+version: '1.1'
+
+services:
+  mongo:
+    image: mongo:3.4
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: dev
+      MONGO_INITDB_ROOT_PASSWORD: password
+  
+  mongo-express:
+    image: mongo-express:0.49
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_INTITD_ROOT_USERNAME: dev
+      ME_MONGODB_INTITD_ROOT_USERNAM: dev
+      ME_CONFIF_MONGODB_URL: mongodb://dev:password@mongo:27017/
+
